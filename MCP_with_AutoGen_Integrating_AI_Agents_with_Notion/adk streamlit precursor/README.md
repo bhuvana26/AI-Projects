@@ -43,8 +43,10 @@ bash scripts/run_streamlit.sh
 ## How it works (in one diagram)
 ```mermaid
 flowchart LR
-  UI[Streamlit ask_app.py] -- HTTP --> API[ADK API Server]
-  API --> AGENT[Simple Q&A Agent]
-  AGENT -. when needed .-> MCP[Tavily MCP (npx)]
-  MCP --> AGENT --> API --> UI
+    UI[Streamlit App] --> API[ADK API Server]
+    API --> AGENT[Agent]
+    AGENT --> MCP[Tavily MCP]
+    MCP --> AGENT
+    AGENT --> API
+    API --> UI
 ```
